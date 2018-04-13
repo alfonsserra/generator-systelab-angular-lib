@@ -7,11 +7,8 @@ node_js:
 before_install:
   - npm i -g makeshift && makeshift -s @systelab -r https://registry.npmjs.org
 
-before_script:
-  - npm install
-  
 script:
-  - ng build
+  - npm install
 
 deploy:
   provider: npm
