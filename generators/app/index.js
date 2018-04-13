@@ -1,10 +1,23 @@
 var Generator = require('yeoman-generator');
 
+function getModuleName(name) {
+	var modulename='';
+	var res = name.split("-");
+	for (var i=0;i<res.length;i++)
+	{
+		modulename+=res[i].replace(/\b\w/g, function(l){ return l.toUpperCase() });
+	}
+	return modulename+'Module';
+}
+
+
 module.exports = class extends Generator {
 
 	constructor(args, options) {
 		super(args, options);
 	}
+
+
 
 	prompting() {
 		return this.prompt([{
@@ -26,6 +39,8 @@ module.exports = class extends Generator {
 			this.props = answers;
 			this.log('Summary:');
 
+
+		this.props.module=getModuleName(answers.name);
 		this.log('   Project name: '+answers.account+'/'+answers.name);
 			if (answers.travis) {
 				this.log('   Include Travis script');
@@ -76,8 +91,7 @@ module.exports = class extends Generator {
 			this.fs.copyTpl(
 				this.templatePath('_travis.yml'),
 				this.destinationPath('.travis.yml'),
-				{ 	title: this.props.name,
-					e2e: this.props.account});
+				{ 	title: this.props.name});
 		}
 
 		this.fs.copy(
@@ -102,7 +116,7 @@ module.exports = class extends Generator {
 			this.templatePath('src/test/_sample.service.spec.ts'),
 			this.destinationPath('src/test/sample.service.spec.ts'),
 			{ 	title: this.props.name,
-				e2e: this.props.account});
+				account: this.props.account});
 
 		this.fs.copy(
 			this.templatePath('src/app/app.component.*'),
@@ -111,7 +125,8 @@ module.exports = class extends Generator {
 			this.templatePath('src/app/_app.module.ts'),
 			this.destinationPath('src/app/app.module.ts'),
 			{ 	title: this.props.name,
-				e2e: this.props.account});
+				account: this.props.account,
+				module: this.props.module});
 
 		this.fs.copy(
 			this.templatePath('src/app/folder/sample.service.ts'),
@@ -121,7 +136,8 @@ module.exports = class extends Generator {
 			this.templatePath('src/app/folder/_library.module.ts'),
 			this.destinationPath('src/app/'+this.props.name+'/'+this.props.name+'.module.ts'),
 			{ 	title: this.props.name,
-				e2e: this.props.account});
+				account: this.props.account,
+				module: this.props.module});
 	}
 
 	install() {
@@ -131,4 +147,5 @@ module.exports = class extends Generator {
 	end() {
 		this.log('Thanks for using systelab-angular-lib generator.');
 	}
+
 };

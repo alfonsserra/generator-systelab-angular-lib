@@ -14,7 +14,7 @@ import { SampleService } from './<%= title %>/sample.service';
 	imports:      [
 		BrowserModule,
 		FormsModule,
-		SystelabPreferencesModule.forRoot()
+		<%= module %>.forRoot()
 	],
 	providers:    [SampleService],
 	bootstrap:    [AppComponent]
