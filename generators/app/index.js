@@ -83,7 +83,7 @@ module.exports = class extends Generator {
 			this.destinationPath('tsconfig.json'));
 		this.fs.copy(
 			this.templatePath('_tsconfig.lib.json'),
-			this.destinationPath('tsconfig.json'));
+			this.destinationPath('tsconfig.lib.json'));
 		this.fs.copy(
 			this.templatePath('_tslint.json'),
 			this.destinationPath('tslint.json'));
