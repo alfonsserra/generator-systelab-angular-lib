@@ -72,19 +72,56 @@ module.exports = class extends Generator {
 		this.fs.copy(
 			this.templatePath('_tslint.json'),
 			this.destinationPath('tslint.json'));
-
-		this.fs.copy(
-			this.templatePath('src'),
-			this.destinationPath('src'));
-
 		if (this.props.travis) {
 			this.fs.copyTpl(
 				this.templatePath('_travis.yml'),
 				this.destinationPath('.travis.yml'),
 				{ 	title: this.props.name,
-					e2e: this.props.e2e});
+					e2e: this.props.account});
 		}
 
+		this.fs.copy(
+			this.templatePath('src/*.ico'),
+			this.destinationPath('src'));
+		this.fs.copy(
+			this.templatePath('src/*.html'),
+			this.destinationPath('src'));
+		this.fs.copy(
+			this.templatePath('src/*.ts'),
+			this.destinationPath('src'));
+		this.fs.copy(
+			this.templatePath('src/*.json'),
+			this.destinationPath('src'));
+		this.fs.copy(
+			this.templatePath('src/*.css'),
+			this.destinationPath('src'));
+		this.fs.copy(
+			this.templatePath('src/environments'),
+			this.destinationPath('src/environments'));
+		this.fs.copyTpl(
+			this.templatePath('src/test/_sample.service.spec.ts'),
+			this.destinationPath('src/test/sample.service.spec.ts'),
+			{ 	title: this.props.name,
+				e2e: this.props.account});
+
+		this.fs.copy(
+			this.templatePath('src/app/app.component.*'),
+			this.destinationPath('src/app'));
+		this.fs.copyTpl(
+			this.templatePath('src/app/_app.module.ts'),
+			this.destinationPath('src/app/app.module.ts'),
+			{ 	title: this.props.name,
+				e2e: this.props.account});
+
+		this.fs.copy(
+			this.templatePath('src/app/folder/sample.service.ts'),
+			this.destinationPath('src/app/'+this.props.name+'/sample.service.ts'));
+
+		this.fs.copyTpl(
+			this.templatePath('src/app/folder/_library.module.ts'),
+			this.destinationPath('src/app/'+this.props.name+'/'+this.props.name+'.module.ts'),
+			{ 	title: this.props.name,
+				e2e: this.props.account});
 	}
 
 	install() {

@@ -1,4 +1,4 @@
-import { SampleService } from '../app/systelab-preferences/sample.service';
+import { SampleService } from '../app/<%= title %>/sample.service';
 
 
 describe( 'Service without the TestBed', () => {
@@ -10,7 +10,7 @@ describe( 'Service without the TestBed', () => {
 
 	} );
 
-	it( 'Check that we can put and get preferences', () => {
+	it( 'Check that we can call to the fist method', () => {
 			expect( service.firstMethod() )
 				.toBe( 'firstMethod' );
 	} );
