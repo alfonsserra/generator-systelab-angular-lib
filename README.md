@@ -22,4 +22,4 @@ Run `yo systelab-angular-lib`, optionally passing an library name:
 yo systelab-angular-lib [library-name]
 ```
 
-Remember to manually add the new repository to your git account.
+Remember to manually add the new repository to your github account.
