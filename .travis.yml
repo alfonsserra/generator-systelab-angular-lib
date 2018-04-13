@@ -5,7 +5,7 @@ node_js:
   - "7"
 
 before_install:
-  - npm i -g makeshift && makeshift -s @systelab -r https://registry.npmjs.org
+  - npm i -g makeshift && makeshift -s @systelab-technologies -r https://registry.npmjs.org
 
 script:
   - npm install
