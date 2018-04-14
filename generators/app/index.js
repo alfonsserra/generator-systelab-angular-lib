@@ -39,9 +39,8 @@ module.exports = class extends Generator {
 			this.props = answers;
 			this.log('Summary:');
 
-
-		this.props.module=getModuleName(answers.name);
-		this.log('   Project name: '+answers.account+'/'+answers.name);
+			this.props.module=getModuleName(answers.name);
+			this.log('   Project name: '+answers.account+'/'+answers.name);
 			if (answers.travis) {
 				this.log('   Include Travis script');
 			}
@@ -63,10 +62,10 @@ module.exports = class extends Generator {
 			{ 	title: this.props.name,
 				account: this.props.account});
 		this.fs.copy(
-			this.templatePath('_karma.conf.js'),
+			this.templatePath('karma.conf.js'),
 			this.destinationPath('karma.conf.js'));
 		this.fs.copy(
-			this.templatePath('_LICENSE'),
+			this.templatePath('LICENSE'),
 			this.destinationPath('LICENSE'));
 		this.fs.copyTpl(
 			this.templatePath('_package.json'),
@@ -79,13 +78,13 @@ module.exports = class extends Generator {
 			{ 	title: this.props.name,
 				account: this.props.account});
 		this.fs.copy(
-			this.templatePath('_tsconfig.json'),
+			this.templatePath('tsconfig.json'),
 			this.destinationPath('tsconfig.json'));
 		this.fs.copy(
-			this.templatePath('_tsconfig.lib.json'),
+			this.templatePath('tsconfig.lib.json'),
 			this.destinationPath('tsconfig.lib.json'));
 		this.fs.copy(
-			this.templatePath('_tslint.json'),
+			this.templatePath('tslint.json'),
 			this.destinationPath('tslint.json'));
 		if (this.props.travis) {
 			this.fs.copyTpl(
