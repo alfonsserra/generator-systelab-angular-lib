@@ -32,7 +32,6 @@
     "url": "https://github.com/systelab/<%= title %>.git"
   },
   "dependencies": {
-    "pako": "^1.0.4"
   },
   "peerDependencies": {
     "@angular/core": ">=5.0.0"

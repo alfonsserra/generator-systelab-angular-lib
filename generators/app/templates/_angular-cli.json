@@ -22,7 +22,6 @@
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/pako/dist/pako.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
