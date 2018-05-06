@@ -50,8 +50,8 @@ module.exports = class extends Generator {
 	writing() {
 		this.log('Creating files:');
 		this.fs.copyTpl(
-			this.templatePath('_angular-cli.json'),
-			this.destinationPath('.angular-cli.json'),
+			this.templatePath('_angular.json'),
+			this.destinationPath('angular.json'),
 			{ 	title: this.props.name});
 		this.fs.copy(
 			this.templatePath('_gitignore'),
